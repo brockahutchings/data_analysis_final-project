@@ -20,6 +20,8 @@ Emissions$PM <- round(Emissions[, 2] / 1000, 2)
 
 #print plot 1
 png(filename = "plot1.png")
+
+#create bar plot
 barplot(Emissions$PM, names.arg = Emissions$Group.1, main = expression('Total Emission of PM'[2.5]), xlab = 'Year', ylab = expression(paste('PM', ''[2.5], ' in Kilotons')))
 
 #turn dev off

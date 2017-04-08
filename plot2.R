@@ -7,3 +7,20 @@
 #Import the files as NEI and SCC
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
+
+#get sample data
+NEIsample <- NEI[sample(nrow(NEI), size = 5000, replace = F), ]
+
+#Subsets data and appends tears to the dataframe
+MD <- subset(NEI, fips == '24510')
+
+#name gif
+png(filename = 'plot2.png')
+
+#create bar plot
+barplot(tapply(X = MD$Emissions, INDEX = MD$year, FUN = sum),
+        main = 'Total Emission in Baltimore City, MD', xlab = 'Year',
+        ylab = expression('PM'[2.5]))
+
+#turn dev off
+dev.off()
